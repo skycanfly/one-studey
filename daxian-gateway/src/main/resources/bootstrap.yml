@@ -1,0 +1,8 @@
+spring:
+  application:
+    name: daxian-gateway
+  cloud:
+    nacos:
+      config:
+        server-addr: localhost:8848
+        namespace: df5a9892-ecb0-4791-ad19-e9d9c3dae11e

@@ -21,6 +21,9 @@
           <module>daxian-order</module>
           <module>daxian-product</module>
           <module>daxian-ware</module>
+          <module>renren-fast</module>
+          <module>renren-generator</module>
+          <module>daxian-common</module>
       </modules>
 
 
