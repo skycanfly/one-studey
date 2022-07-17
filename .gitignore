@@ -13,6 +13,7 @@ buildNumber.properties
 **/mvnw
 **/mvnw.cmd
 **/.mvn
+**/.DS_Store
 **/target/
 .idea
 **/.gitignore

@@ -7,19 +7,20 @@
     <version>0.0.1-SNAPSHOT</version>
     <name>guiimall</name>
     <packaging>pom</packaging>
-    <description>Demo project for Spring Boot</description>
+    <description>聚合服务，总项目</description>
 
     <properties>
         <java.version>1.8</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <spring-boot.version>2.3.7.RELEASE</spring-boot.version>
+        <spring-boot.version>2.1.8.RELEASE</spring-boot.version>
     </properties>
       <modules>
           <module>daxian-coupon</module>
           <module>daxian-member</module>
           <module>daxian-order</module>
           <module>daxian-product</module>
+          <module>daxian-gateway</module>
           <module>daxian-ware</module>
           <module>renren-fast</module>
           <module>renren-generator</module>
