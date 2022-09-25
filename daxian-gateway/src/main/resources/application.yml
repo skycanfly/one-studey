@@ -2,7 +2,7 @@ spring:
   cloud:
     gateway:
       routes:
-        - id: test_route
+        - id: baidu_route
           uri: https://www.baidu.com
           predicates:
             - Query=uri,baidu
