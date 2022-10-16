@@ -14,7 +14,7 @@ buildNumber.properties
 **/mvnw.cmd
 **/.mvn
 *.DS_Store
-.iml
+*.iml
 **/target/
 .idea
 **/.gitignore
