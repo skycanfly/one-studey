@@ -36,13 +36,22 @@ public class CouponController {
      @Value("${daxian.user}")
     private   String username;
 
+
     /**
-     * 列表
+     * 测试配置中心
+     */
+    @RequestMapping("/test2")
+    public R test2(){
+        return R.ok().put("username",username);
+    }
+
+    /**
+     * 测试openfeign
      */
     @RequestMapping("/test")
-    public R test(@RequestParam Map<String, Object> params){
-
-        return R.ok().put("user",username);
+    public R test(){
+        CouponEntity c=CouponEntity.builder().couponName("优惠卷名字").num(12).build();
+        return R.ok().put("data",Arrays.asList(c));
     }
 
     /**

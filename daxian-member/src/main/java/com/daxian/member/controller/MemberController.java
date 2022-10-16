@@ -39,7 +39,7 @@ public class MemberController {
     @RequestMapping("/test")
     public R test(@RequestParam Map<String, Object> params){
         R membercoupons = couponFeignService.membercoupons();
-        return R.ok().put("a",membercoupons);
+        return R.ok().put("coupons",membercoupons.get("data"));
     }
 
     /**

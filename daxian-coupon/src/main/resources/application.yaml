@@ -1,3 +1,4 @@
+
 spring:
   datasource:
     username: root
@@ -9,6 +10,7 @@ spring:
       discovery:
         server-addr: localhost:8848
 
+
 mybatis-plus:
   mapper-locations: classpath:/mapper/**/*.xml
   global-config:
@@ -16,5 +18,8 @@ mybatis-plus:
       id-type: auto
       logic-delete-value: 1
       logic-not-delete-value: 0
+
+daxian:
+  user: 222
 server:
   port: 7000

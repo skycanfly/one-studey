@@ -6,6 +6,8 @@ import com.baomidou.mybatisplus.annotation.TableName;
 import java.math.BigDecimal;
 import java.io.Serializable;
 import java.util.Date;
+
+import lombok.Builder;
 import lombok.Data;
 
 /**
@@ -15,6 +17,7 @@ import lombok.Data;
  * @email xianer@gmail.com
  * @date 2022-06-11 21:15:49
  */
+@Builder
 @Data
 @TableName("sms_coupon")
 public class CouponEntity implements Serializable {
