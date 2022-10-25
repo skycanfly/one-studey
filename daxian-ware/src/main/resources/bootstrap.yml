@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: daxian-ware
+
+  cloud:
+    nacos:
+      config:
+        server-addr: localhost:8848
+      discovery:
+        server-addr: localhost:8848
+

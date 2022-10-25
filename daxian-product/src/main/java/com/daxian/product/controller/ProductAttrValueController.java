@@ -70,7 +70,6 @@ public class ProductAttrValueController {
    // @RequiresPermissions("product:productattrvalue:update")
     public R update(@RequestBody ProductAttrValueEntity productAttrValue){
 		productAttrValueService.updateById(productAttrValue);
-
         return R.ok();
     }
 
