@@ -1,9 +1,15 @@
 package com.daxian.product.service.impl;
 
+import org.redisson.api.RLock;
+import org.redisson.api.RedissonClient;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
+import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
@@ -20,6 +26,12 @@ import com.daxian.product.service.CategoryService;
 @Service("categoryService")
 public class CategoryServiceImpl extends ServiceImpl<CategoryDao, CategoryEntity> implements CategoryService {
 
+    @Autowired
+    private StringRedisTemplate stringRedisTemplate;
+
+    @Autowired
+    private RedissonClient redissonClient;
+
     @Override
     public PageUtils queryPage(Map<String, Object> params) {
         IPage<CategoryEntity> page = this.page(
@@ -30,8 +42,10 @@ public class CategoryServiceImpl extends ServiceImpl<CategoryDao, CategoryEntity
         return new PageUtils(page);
     }
 
+    @Cacheable(value = "category" )
     @Override
     public List<CategoryEntity> queryTree() {
+        System.out.println(111);
         List<CategoryEntity> categoryEntities = baseMapper.selectList(null);
         List<CategoryEntity> collect = categoryEntities.stream().filter(x -> x.getParentCid() == 0)
                 .map(a -> {
@@ -45,6 +59,21 @@ public class CategoryServiceImpl extends ServiceImpl<CategoryDao, CategoryEntity
 
         return collect;
     }
+
+//    public Map<String, List<CategoryEntity>> getCatalogJsonDbWithRedisson() {
+//        Map<String, List<CategoryEntity>> categoryMap=null;
+//        RLock lock = redissonClient.getLock("CatalogJson-Lock");
+//        lock.lock(10, TimeUnit.SECONDS);
+//        try {
+//            Thread.sleep(15000);
+//            categoryMap = getCategoryMap();
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        }finally {
+//            lock.unlock();
+//            return categoryMap;
+//        }
+//    }
 
     private List<CategoryEntity> getChildrens(CategoryEntity a, List<CategoryEntity> categoryEntities) {
         List<CategoryEntity> collect = categoryEntities.stream().filter(x -> x.getParentCid() == a.getCatId())

@@ -26,6 +26,8 @@
           <module>renren-generator</module>
           <module>daxian-common</module>
           <module>daxian-search</module>
+          <module>daxian-shiro</module>
+          <module>daxian-neo4j</module>
 
       </modules>
 

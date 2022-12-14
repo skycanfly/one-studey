@@ -7,10 +7,13 @@ import com.daxian.product.service.BrandService;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.redisson.api.RedissonClient;
+import org.redisson.client.RedisClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import javax.annotation.Resource;
 import java.util.List;
 
 @RunWith(SpringRunner.class)
@@ -28,6 +31,14 @@ import java.util.List;
        // brandService.save(brandEntity);
         List<BrandEntity> list = brandService.list(new QueryWrapper<BrandEntity>().eq("brand_id", 2L));
         list.forEach((x)-> System.out.println(x));
+    }
+
+    @Autowired
+    private RedissonClient redissonClient;
+
+    @Test
+    public void testRedisson() {
+        System.out.println(redissonClient);
     }
 
 }
